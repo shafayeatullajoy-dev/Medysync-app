@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Keep your medical history organized and easy to access with MediSync.">
+    <title>MediSync — Your health, organized</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="locations-bd.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#home" aria-label="MediSync home" data-view-link="home">
+          <span class="brand-mark" aria-hidden="true">+</span>
+          <span>Medi<span>Sync</span></span>
+        </a>
+
+        <div class="drawer-heading"><strong>Menu</strong><button type="button" class="drawer-close" data-close-sidebar aria-label="Close menu">×</button></div>
+        <div class="sidebar-label">MENU</div>
+        <nav class="side-nav" aria-label="Main navigation">
+          <button class="side-link is-active" type="button" data-view="home" aria-label="Home screen">
+            <span class="nav-icon" aria-hidden="true">⌂</span><span>Home</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link" type="button" data-view="my-health">
+            <span class="nav-icon" aria-hidden="true">♡</span><span>My Health</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link" type="button" data-view="doctors">
+            <span class="nav-icon" aria-hidden="true">♙</span><span>Doctor's</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link" type="button" data-open-campaign>
+            <span class="nav-icon" aria-hidden="true">◈</span><span>Ads / Promotion</span><span class="nav-badge">PRO</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link" type="button" data-view="reminders">
+            <span class="nav-icon" aria-hidden="true">♧</span><span>Notifications</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link" type="button" data-view="settings">
+            <span class="nav-icon" aria-hidden="true">⚙</span><span>Settings</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link" type="button" data-view="assistant">
+            <span class="nav-icon" aria-hidden="true">?</span><span>Help &amp; Support</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link" type="button" data-view="settings" data-open-language>
+            <span class="nav-icon" aria-hidden="true">文</span><span>Language</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="side-link drawer-signin" type="button" data-open-auth>
+            <span class="nav-icon" aria-hidden="true">↪</span><span>Sign in / Register</span><span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+        </nav>
+
+        <div class="provider-links">
+          <span>FOR DOCTORS &amp; MEDICALS</span>
+          <button type="button" data-open-doctor-profile>Doctor profile</button>
+          <button type="button" data-open-clinic-profile>Register a medical</button>
+          <button type="button" data-view="assistant">Health assistant</button>
+        </div>
+
+        <div class="sidebar-help">
+          <span class="help-icon" aria-hidden="true">?</span>
+          <strong>Need a hand?</strong>
+          <p>Your health records stay private and in your control.</p>
+          <a href="mailto:support@medisync.example">Contact support <span aria-hidden="true">→</span></a>
+        </div>
+
+        <button class="profile-button" type="button" data-open-patient-profile>
+          <span class="avatar">AR</span>
+          <span class="profile-copy"><strong>Ayesha Rahman</strong><small>Patient profile · offline history</small></span>
+          <span class="profile-more" aria-hidden="true">···</span>
+        </button>
+      </aside>
+      <button class="sidebar-backdrop" type="button" aria-label="Close navigation" data-close-sidebar></button>
+
+      <div class="main-column">
+        <header class="topbar">
+          <button class="mobile-menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+            <span></span><span></span><span></span>
+          </button>
+          <a class="topbar-brand" href="#home" aria-label="MediSync home" data-view-link="home"><span class="brand-mark" aria-hidden="true">+</span><span>Medi<span>Sync</span></span></a>
+          <div class="breadcrumb"><span>Workspace</span><span aria-hidden="true">/</span><strong data-current-page>Overview</strong></div>
+          <nav class="topbar-nav" aria-label="Quick navigation"><button type="button" data-view="home">Home</button><button type="button" data-view="doctors">Explore</button><button type="button" data-open-auth>Sign in</button></nav>
+          <div class="topbar-actions">
+            <label class="global-search">
+              <span aria-hidden="true">⌕</span>
+              <input type="search" placeholder="Search doctors or specialists" aria-label="Search doctors and specialists" data-search>
+              <kbd>⌘ K</kbd>
+            </label>
+            <button class="icon-button notification-button" type="button" aria-label="Notifications" data-view="reminders">
+              <span aria-hidden="true">♧</span><i></i>
+            </button>
+            <button class="topbar-avatar" type="button" data-open-patient-profile aria-label="Open account"><span class="avatar-initials">AR</span></button>
+          </div>
+        </header>
+
+        <main id="app-main">
+          <section class="view is-visible" id="view-home" aria-labelledby="welcome-title">
+            <div class="welcome-row home-welcome">
+              <div>
+                <p class="eyebrow"><span class="status-dot"></span> YOUR HEALTH, IN SYNC</p>
+                <h1 id="welcome-title">Find care that feels right.</h1>
+                <p class="muted">Search doctors near you and keep your health history close.</p>
+              </div>
+              <button class="button button-primary" type="button" data-view="doctors">Find a doctor <span aria-hidden="true">→</span></button>
+            </div>
+
+            <form class="doctor-search-panel home-search-panel panel" data-doctor-search data-location-form>
+              <label class="doctor-query-field"><span class="sr-only">Doctor or specialist</span><span class="search-field-icon" aria-hidden="true">⌕</span><input name="query" type="search" placeholder="Search doctors, specialists..." autocomplete="off"></label>
+              <div class="location-search-field"><label class="sr-only" for="home-location-query">Location</label><div class="location-input-wrap"><span aria-hidden="true">⌖</span><input id="home-location-query" name="locationQuery" type="search" placeholder="Current location: choose district or area" autocomplete="off" data-location-query><button type="button" class="location-clear" data-location-clear aria-label="Clear location" hidden>×</button><span class="location-edit-hint">Change</span></div><input type="hidden" name="district" data-district><input type="hidden" name="area" data-area><div class="location-suggestions" data-location-suggestions role="listbox" hidden></div><small class="location-count" data-location-count></small></div>
+              <label><span>Health concern</span><select name="condition" data-condition><option value="">Any condition</option></select></label>
+              <button class="button button-primary home-search-submit" type="submit">Find care <span aria-hidden="true">→</span></button>
+            </form>
+
+            <div class="home-feature-grid">
+              <aside class="ad-slot panel" aria-label="Advertisement banner placement">
+                <span>AD · SPONSORED</span><strong>Featured health &amp; medicine partner</strong><small>Banner placement · targeted by selected location</small><small data-campaign-summary>No campaign drafts yet.</small><button class="text-button" type="button" data-ad-info>Advertise here →</button>
+              </aside>
+            </div>
+
+            <section class="home-discovery" aria-labelledby="recommended-heading">
+              <div class="section-heading"><div><p class="eyebrow">PERSONALIZED CARE</p><h2 id="recommended-heading">Recommended</h2><p class="muted" data-recommendation-note>Suggestions use your saved health history and selected filters.</p></div><button class="text-button" type="button" data-view="doctors">See all →</button></div>
+              <div class="doctor-grid home-doctor-grid" data-home-doctors></div>
+            </section>
+
+            <div class="overview-grid">
+              <article class="panel health-card">
+                <div class="panel-heading">
+                  <div><p class="eyebrow">HEALTH PROFILE</p><h2>Your health at a glance</h2></div>
+                  <button class="more-button" type="button" data-view="settings" aria-label="Edit health profile">···</button>
+                </div>
+                <div class="profile-stats">
+                  <div class="profile-stat"><span class="stat-icon mint" aria-hidden="true">♡</span><span><small>Blood group</small><strong data-patient-blood>Not added</strong></span></div>
+                  <div class="profile-stat"><span class="stat-icon lavender" aria-hidden="true">⌁</span><span><small>Known allergies</small><strong data-patient-allergies>Add in your profile</strong></span></div>
+                  <div class="profile-stat"><span class="stat-icon peach" aria-hidden="true">▦</span><span><small>Medical records</small><strong data-record-total>2 records</strong></span></div>
+                </div>
+                <div class="privacy-note"><span aria-hidden="true">♢</span> Your health history stays private on this device.</div>
+              </article>
+
+              <article class="panel reminder-card">
+                <div class="reminder-top"><span class="reminder-icon" aria-hidden="true">◷</span><span class="eyebrow">CARE REMINDER</span></div>
+                <h2>Never miss an appointment.</h2>
+                <p>Add a doctor visit or medicine reminder with a date and time.</p>
+                <button class="text-button" type="button" data-open-reminder>＋ Add a reminder</button>
+                <span class="decorative-cross" aria-hidden="true">+</span>
+              </article>
+            </div>
+
+            <section class="content-section" aria-labelledby="recent-heading">
+              <div class="section-heading">
+                <div><p class="eyebrow">STAY IN THE KNOW</p><h2 id="recent-heading">Recent medical history</h2></div>
+                <button class="text-button" type="button" data-view="records">View all records <span aria-hidden="true">→</span></button>
+              </div>
+              <div class="record-list" data-recent-records></div>
+            </section>
+
+            <section class="bottom-cards">
+              <article class="panel tip-card">
+                <span class="tip-symbol" aria-hidden="true">✦</span>
+                <div><p class="eyebrow">A LITTLE REMINDER</p><h2>Small steps make a big difference.</h2><p>Save your prescriptions and reports here, so they're easy to find when you need them.</p></div>
+              </article>
+              <article class="panel quick-card">
+                <div><p class="eyebrow">QUICK ACTION</p><h2>Have a new prescription?</h2><p>Add it to your history in just a few steps.</p></div>
+                <button class="button button-secondary" type="button" data-open-entry>＋ Add a record</button>
+              </article>
+            </section>
+          </section>
+
+            <section class="view" id="view-doctors" aria-labelledby="doctors-title" hidden>
+              <div class="page-heading"><div><p class="eyebrow">CARE NEAR YOU</p><h1 id="doctors-title">Find a doctor</h1><p class="muted">Search by doctor, specialist, district, or area.</p></div><div class="heading-actions"><button class="button button-secondary" type="button" data-open-clinic-profile>Register a medical</button><button class="button button-secondary" type="button" data-open-doctor-profile>＋ Doctor profile</button></div></div>
+              <form class="doctor-search-panel panel directory-search" data-doctor-search data-location-form>
+                <label><span>Doctor or specialist</span><input name="query" type="search" placeholder="Name or specialty"></label>
+                <div class="location-search-field"><label for="directory-location-query">Location</label><div class="location-input-wrap"><span aria-hidden="true">⌖</span><input id="directory-location-query" name="locationQuery" type="search" placeholder="Add a location" autocomplete="off" data-location-query><button type="button" class="location-clear" data-location-clear aria-label="Clear location" hidden>×</button></div><input type="hidden" name="district" data-district><input type="hidden" name="area" data-area><div class="location-suggestions" data-location-suggestions role="listbox" hidden></div><small class="location-count" data-location-count></small></div>
+                <label><span>Health concern</span><select name="condition" data-condition><option value="">Any condition</option></select></label>
+                <button class="button button-primary" type="submit">Search</button>
+              </form>
+              <div class="directory-meta"><strong data-doctor-results>Recommended doctors</strong><span data-directory-note>Sample directory only · no doctor credential is verified in this prototype</span></div>
+              <div class="doctor-grid directory-grid" data-doctor-list></div>
+              <div class="empty-state" data-doctor-empty hidden><h2>No doctors found</h2><p>Try another name, specialty, or location.</p></div>
+            </section>
+
+            <section class="view" id="view-doctor-detail" aria-labelledby="doctor-detail-name" hidden>
+              <button class="back-link" type="button" data-view="doctors">← Back to doctor search</button>
+              <div class="doctor-profile-layout" data-doctor-detail></div>
+            </section>
+
+            <section class="view" id="view-assistant" aria-labelledby="assistant-title" hidden>
+              <div class="page-heading"><div><p class="eyebrow">MEDISYNC HEALTH ASSISTANT</p><h1 id="assistant-title">What kind of care do you need?</h1><p class="muted">Share a concern to explore relevant specialists and nearby care options.</p></div></div>
+              <div class="assistant-layout">
+                <section class="panel assistant-panel">
+                  <div class="assistant-intro"><span class="ai-promo-icon">✦</span><div><h2>I'm here to help you find care.</h2><p>I can help you navigate doctors and your saved history—not diagnose or prescribe.</p></div></div>
+                  <form data-assistant-form class="assistant-form"><label for="health-concern">What are you experiencing?</label><textarea id="health-concern" name="concern" rows="4" placeholder="For example: I have a recurring headache and want to find a doctor in Dhaka." required></textarea><button class="button button-primary" type="submit">Explore care options →</button></form>
+                  <div class="assistant-result" data-assistant-result hidden></div>
+                  <p class="safety-note">This demo is not medical advice. It does not recommend medicines or replace a licensed clinician. For severe or sudden symptoms, seek urgent local medical care.</p>
+                </section>
+                <aside class="panel history-summary"><p class="eyebrow">YOUR SAVED HISTORY</p><h2>Ready when you need it</h2><p>Use your uploaded prescription and report notes to prepare for a clinician visit. Your records are not analyzed by an AI in this demo.</p><button class="text-button" type="button" data-view="records">Open medical history →</button></aside>
+              </div>
+            </section>
+
+            <section class="view" id="view-reminders" aria-labelledby="reminders-title" hidden>
+              <div class="page-heading"><div><p class="eyebrow">YOUR CARE CALENDAR</p><h1 id="reminders-title">Reminders</h1><p class="muted">Keep track of doctor visits and medicine schedules.</p></div><button class="button button-primary" type="button" data-open-reminder>＋ Add reminder</button></div>
+              <div class="calendar-shell panel"><div class="calendar-header"><div><p class="eyebrow">UPCOMING</p><h2>Appointments & reminders</h2></div><span class="calendar-month" data-current-month></span></div><div class="reminder-list" data-reminder-list></div><div class="empty-state" data-reminder-empty><h2>Your calendar is clear</h2><p>Add a reminder with a date and time to see it here.</p></div></div>
+            </section>
+
+          <section class="view" id="view-my-health" aria-labelledby="my-health-title" hidden>
+            <div class="my-health-header"><p class="eyebrow">MY HEALTH HISTORY</p><h1 id="my-health-title">Your health, in one place</h1><p class="muted">Add a new entry, review your saved history, or get a safe summary.</p></div>
+            <div class="my-health-actions">
+              <button class="my-health-action add-action" type="button" data-open-entry><span class="my-health-action-icon">＋</span><strong>Add</strong><small>Create a new medical entry</small><span class="my-health-action-arrow">→</span></button>
+              <button class="my-health-action history-action" type="button" data-view="records"><span class="my-health-action-icon">▤</span><strong>History</strong><small>View prescriptions and reports</small><span class="my-health-action-arrow">→</span></button>
+              <button class="my-health-action summary-action" type="button" data-view="assistant"><span class="my-health-action-icon">✦</span><strong>AI Summary</strong><small>Prepare questions for your clinician</small><span class="my-health-action-arrow">→</span></button>
+            </div>
+            <section class="my-health-recent">
+              <div class="section-heading"><div><p class="eyebrow">RECENT ENTRIES</p><h2>Latest medical history</h2></div><button class="text-button" type="button" data-view="records">View history →</button></div>
+              <div class="record-list" data-health-recent></div>
+              <div class="empty-state" data-health-empty hidden><h2>No health records yet</h2><p>Add your first prescription or report to begin your history.</p><button class="button button-primary" type="button" data-open-entry>＋ Add medical entry</button></div>
+            </section>
+            <p class="safety-note">Your records stay on this device in this prototype. The summary does not diagnose or recommend treatment.</p>
+          </section>
+
+          <section class="view" id="view-records" aria-labelledby="records-title" hidden>
+            <div class="page-heading">
+              <div><p class="eyebrow">YOUR PRIVATE LIBRARY</p><h1 id="records-title">Medical history</h1><p class="muted">Prescriptions, reports, and visit notes in one secure place.</p></div>
+              <button class="button button-primary" type="button" data-open-entry><span aria-hidden="true">＋</span> Add medical entry</button>
+            </div>
+            <div class="record-toolbar">
+              <label class="record-search"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search by doctor, clinic, or date" aria-label="Filter medical history" data-record-filter></label>
+              <label class="select-wrap"><span class="sr-only">Filter by category</span><select data-category-filter><option value="all">All entries</option><option value="prescription">Prescriptions</option><option value="report">Reports</option><option value="medicine">Medicine</option></select></label>
+            </div>
+            <div class="record-list full-record-list" data-records-list></div>
+            <div class="empty-state" data-empty-state hidden><span aria-hidden="true">▤</span><h2>No matching records</h2><p>Try a different search or add a medical entry.</p></div>
+          </section>
+
+          <section class="view" id="view-detail" aria-labelledby="detail-title" hidden>
+            <button class="back-link" type="button" data-view="records"><span aria-hidden="true">←</span> Back to medical history</button>
+            <div class="detail-heading">
+              <div><p class="eyebrow">MEDICAL ENTRY</p><h1 id="detail-title">Prescription</h1><p class="muted" data-detail-meta></p></div>
+              <button class="button button-secondary" type="button" data-open-entry>＋ Add another entry</button>
+            </div>
+            <div class="detail-grid">
+              <article class="panel detail-main">
+                <div class="detail-section"><div class="detail-section-heading"><span class="detail-type-icon rx-icon">Rx</span><div><h2>Prescription</h2><p>Prescribed treatment and instructions</p></div></div><div class="image-grid" data-detail-prescription></div><p class="detail-description" data-description-prescription></p></div>
+                <div class="detail-section"><div class="detail-section-heading"><span class="detail-type-icon report-icon">▧</span><div><h2>Report</h2><p>Lab results and medical reports</p></div></div><div class="image-grid" data-detail-report></div><p class="detail-description" data-description-report></p></div>
+                <div class="detail-section"><div class="detail-section-heading"><span class="detail-type-icon medicine-icon">✚</span><div><h2>Medicine</h2><p>Medicine information</p></div></div><div class="image-grid" data-detail-medicine></div><p class="detail-description" data-description-medicine></p></div>
+              </article>
+              <aside class="panel visit-card">
+                <p class="eyebrow">VISIT DETAILS</p>
+                <dl><div><dt>Date</dt><dd data-detail-date></dd></div><div><dt>Doctor</dt><dd data-detail-doctor></dd></div><div><dt>Hospital / clinic</dt><dd data-detail-facility></dd></div></dl>
+                <div class="private-tag"><span aria-hidden="true">♢</span> Private to your account</div>
+              </aside>
+            </div>
+          </section>
+
+          <section class="view" id="view-settings" aria-labelledby="settings-title" hidden>
+            <div class="page-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h1 id="settings-title">Settings</h1><p class="muted">Choose how MediSync works for you.</p></div></div>
+            <div class="settings-layout">
+              <nav class="settings-nav" aria-label="Settings categories"><a class="is-active" href="#preferences">Preferences</a><a href="#account-settings">Account</a><a href="#privacy-settings">Privacy</a></nav>
+              <div class="settings-content">
+                <section class="panel settings-panel" id="preferences">
+                  <div class="settings-panel-heading"><span class="settings-icon" aria-hidden="true">⚙</span><div><h2>Preferences</h2><p>Set your language, appearance, and sound.</p></div></div>
+                  <div class="setting-row language-row"><div><strong>Language</strong><p>Choose the language you prefer.</p></div><div class="language-options" role="group" aria-label="Language"><button type="button" data-language="Bangla">বাংলা</button><button type="button" data-language="Hindi">हिन्दी</button><button class="is-selected" type="button" data-language="English">English</button><button type="button" data-language="German">Deutsch</button><button type="button" data-language="Urdu">اردو</button><button type="button" data-language="Spanish">Español</button><button type="button" data-language="Italian">Italiano</button></div></div>
+                  <div class="setting-row"><div><strong>Appearance</strong><p>Choose light or dark mode.</p></div><div class="segmented-control" role="group" aria-label="Appearance"><button class="is-selected" type="button" data-theme="light">Light mode</button><button type="button" data-theme="dark">Dark mode</button></div></div>
+                  <div class="setting-row"><div><strong>Sound</strong><p>Play gentle sounds for in-app actions.</p></div><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Sound" data-setting-toggle="sound"><span></span></button></div>
+                  <div class="setting-row"><div><strong>Notifications</strong><p>Get notified when your health record is updated.</p></div><button class="switch is-on" type="button" role="switch" aria-checked="true" aria-label="Notifications" data-setting-toggle="notifications"><span></span></button></div>
+                </section>
+                <section class="panel settings-panel" id="account-settings">
+                  <div class="settings-panel-heading"><span class="settings-icon account-icon" aria-hidden="true">AR</span><div><h2>Account information</h2><p>Your personal and family profiles.</p></div><button class="text-button" type="button" data-open-patient-profile>Edit profile <span aria-hidden="true">→</span></button></div>
+                  <div class="account-details"><div><small>Full name</small><strong data-patient-name>Ayesha Rahman</strong></div><div><small>Email address</small><strong data-patient-email>ayesha@example.com</strong></div></div>
+                  <button class="text-button" type="button" data-open-patient-profile>Manage health profile</button>
+                </section>
+                <section class="panel privacy-panel" id="privacy-settings"><span aria-hidden="true">♢</span><div><strong>Your health data belongs to you.</strong><p>Your records are stored in this browser for this prototype. No information is sent to a server.</p></div></section>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <nav class="bottom-nav" aria-label="Main tabs">
+          <button class="bottom-tab is-active" type="button" data-view="home"><span aria-hidden="true">⌂</span><small>Home</small></button>
+          <button class="bottom-tab" type="button" data-view="doctors"><span aria-hidden="true">⌕</span><small>Explore</small></button>
+          <button class="bottom-tab" type="button" data-view="records"><span aria-hidden="true">♧</span><small>Saved</small></button>
+          <button class="bottom-tab" type="button" data-open-patient-profile><span class="bottom-profile-icon">AR</span><small>Profile</small></button>
+        </nav>
+        <button class="assistant-fab" type="button" data-view="assistant">ASK AI</button>
+        <footer class="app-footer"><span>© 2026 MediSync</span><span><span class="footer-status"></span> Your health space is private</span></footer>
+      </div>
+    </div>
+
+    <dialog class="modal entry-modal" id="entry-dialog" aria-labelledby="entry-title">
+      <form class="modal-card entry-form" data-entry-form>
+        <div class="modal-header"><div><p class="eyebrow">YOUR MEDICAL HISTORY</p><h2 id="entry-title">New medical entry</h2><p>Add visit details and attach your documents.</p></div><button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <div class="visit-fields">
+          <label>Date of visit<input name="date" type="date" required></label>
+          <label>Doctor name<input name="doctor" type="text" placeholder="e.g. Dr. Miller" required></label>
+          <label class="wide-field">Hospital, clinic, or pharmacy<input name="facility" type="text" placeholder="Enter a medical facility" required></label>
+        </div>
+        <div class="upload-section">
+          <div class="upload-heading"><div><h3>Prescription</h3><p>Upload up to 5 photos</p></div><span class="upload-count" data-upload-count="prescription">0 / 5</span></div>
+          <label class="upload-drop"><input name="prescriptionFiles" type="file" accept="image/*" multiple data-upload="prescription" data-limit="5"><span class="upload-plus">＋</span><span><strong>Add prescription photos</strong><small>JPG or PNG · Up to 5 images</small></span></label>
+          <div class="file-list" data-file-list="prescription"></div>
+          <label class="description-field">Description <span>Up to 200 characters</span><textarea name="prescriptionDescription" maxlength="200" rows="2" placeholder="Add instructions or notes about this prescription"></textarea></label>
+        </div>
+        <div class="upload-section">
+          <div class="upload-heading"><div><h3>Report</h3><p>Upload up to 10 photos</p></div><span class="upload-count" data-upload-count="report">0 / 10</span></div>
+          <label class="upload-drop"><input name="reportFiles" type="file" accept="image/*" multiple data-upload="report" data-limit="10"><span class="upload-plus">＋</span><span><strong>Add report photos</strong><small>JPG or PNG · Up to 10 images</small></span></label>
+          <div class="file-list" data-file-list="report"></div>
+          <label class="description-field">Description <span>Up to 1,000 characters</span><textarea name="reportDescription" maxlength="1000" rows="2" placeholder="Add a note about your report"></textarea></label>
+        </div>
+        <div class="upload-section">
+          <div class="upload-heading"><div><h3>Medicine</h3><p>Upload up to 4 photos</p></div><span class="upload-count" data-upload-count="medicine">0 / 4</span></div>
+          <label class="upload-drop"><input name="medicineFiles" type="file" accept="image/*" multiple data-upload="medicine" data-limit="4"><span class="upload-plus">＋</span><span><strong>Add medicine photos</strong><small>JPG or PNG · Up to 4 images</small></span></label>
+          <div class="file-list" data-file-list="medicine"></div>
+          <label class="description-field">Description <span>Optional</span><textarea name="medicineDescription" maxlength="500" rows="2" placeholder="Add medicine details"></textarea></label>
+        </div>
+        <div class="modal-actions"><button class="button button-secondary" type="button" data-close-dialog>Cancel</button><button class="button button-primary" type="submit">Save medical entry <span aria-hidden="true">✓</span></button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal auth-modal" id="auth-dialog" aria-labelledby="auth-title">
+      <form class="modal-card auth-card" data-auth-form>
+        <button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button>
+        <span class="brand-mark auth-mark" aria-hidden="true">+</span>
+        <p class="eyebrow">WELCOME TO MEDISYNC</p><h2 id="auth-title">Your health, all together.</h2><p class="auth-copy">Sign in or create an account to keep your medical history close. Demo only: email OTP delivery and account verification are not connected.</p>
+        <div class="auth-tabs" role="tablist" aria-label="Account access"><button class="is-selected" type="button" role="tab" aria-selected="true" data-auth-mode="login">Sign in</button><button type="button" role="tab" aria-selected="false" data-auth-mode="register">Create account</button></div>
+        <div class="auth-fields" data-login-fields><label>Email address<input name="loginEmail" type="email" required placeholder="you@example.com"></label><label>Password<input name="loginPassword" type="password" required placeholder="Enter your password"></label><button class="button button-primary auth-submit" type="submit">Sign in</button><button class="google-button" type="button">Continue with Google</button></div>
+        <div class="auth-fields" data-register-fields hidden><label>Full name<input name="registerName" type="text" required placeholder="Your full name"></label><label>Mobile number<input name="registerMobile" type="tel" required placeholder="+880 1XXX-XXXXXX"></label><label>Email address<input name="registerEmail" type="email" required placeholder="you@example.com"></label><button class="google-button" type="button" data-send-auth-otp>Verify email with OTP</button><label>Password<input name="registerPassword" type="password" required minlength="8" placeholder="Create a password"></label><label>Confirm password<input name="registerConfirm" type="password" required minlength="8" placeholder="Repeat your password"></label><button class="button button-primary auth-submit" type="submit">Create account</button></div>
+        <p class="auth-message" role="status" data-auth-message></p>
+        <p class="auth-privacy">By continuing, you agree to keep your account information accurate.</p>
+      </form>
+    </dialog>
+
+    <dialog class="modal otp-modal" id="otp-dialog" aria-labelledby="otp-title">
+      <form class="modal-card otp-card" data-otp-form>
+        <button class="icon-button modal-close" type="button" data-otp-back aria-label="Back">←</button>
+        <span class="brand-mark auth-mark" aria-hidden="true">+</span>
+        <p class="eyebrow">EMAIL VERIFICATION</p>
+        <h2 id="otp-title">Enter your verification code</h2>
+        <p class="auth-copy">Enter the one-time code for <strong data-otp-email></strong>.</p>
+        <label class="otp-code-field">6-digit code<input name="otp" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required placeholder="••••••"></label>
+        <p class="otp-demo-note">Prototype demo: email delivery is not connected. Use <strong>123456</strong> to preview verification; this does not verify a real email.</p>
+        <p class="auth-message" role="status" data-otp-message></p>
+        <button class="button button-primary auth-submit" type="submit">Verify email</button>
+        <button class="text-button otp-resend" type="button" data-otp-resend>Resend code</button>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="reminder-dialog" aria-labelledby="reminder-dialog-title">
+      <form class="modal-card compact-form" data-reminder-form>
+        <div class="modal-header"><div><p class="eyebrow">CARE CALENDAR</p><h2 id="reminder-dialog-title">Add a reminder</h2><p>Keep your next visit or medicine time close.</p></div><button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <div class="visit-fields">
+          <label>Reminder type<select name="type" required><option>Doctor appointment</option><option>Medicine</option><option>Follow-up</option></select></label>
+          <label>Title<input name="title" type="text" placeholder="e.g. Dr. Rahman's appointment" required maxlength="80"></label>
+          <label>Date<input name="date" type="date" required></label>
+          <label>Time<input name="time" type="time" required></label>
+          <label class="wide-field">Notes (optional)<input name="notes" type="text" placeholder="Add a short note"></label>
+        </div>
+        <div class="modal-actions"><button class="button button-secondary" type="button" data-close-dialog>Cancel</button><button class="button button-primary" type="submit">Save reminder</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="doctor-profile-dialog" aria-labelledby="doctor-profile-title">
+      <form class="modal-card compact-form" data-doctor-profile-form>
+        <div class="modal-header"><div><p class="eyebrow">DOCTOR ONBOARDING</p><h2 id="doctor-profile-title">Create your doctor profile</h2><p>A valid BMDC number is required before profile review.</p></div><button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <div class="visit-fields doctor-profile-fields">
+          <label>Doctor's full name<input name="name" type="text" required placeholder="Dr. ..."></label>
+          <label>Specialist in<input name="specialty" type="text" required placeholder="e.g. Cardiology"></label>
+          <label>BMDC registration number<input name="bmdc" type="text" required placeholder="Required for review"></label>
+          <label>FCPS / specialist certificate<input name="certificate" type="file" accept="image/*,.pdf"></label>
+          <div class="wide-field clinic-list" data-clinic-list>
+            <div class="clinic-entry">
+              <label>Medical / hospital name<input name="clinicName" type="text" required placeholder="Add a hospital or clinic"></label>
+              <label>District<select name="clinicDistrict" required data-bd-district-select><option value="">Choose district</option></select></label>
+              <label>Area / upazila<input name="clinicArea" type="text" required placeholder="e.g. Dhanmondi"></label>
+              <label>Chamber days and hours<input name="clinicSchedule" type="text" required placeholder="e.g. Sun–Thu, 5–9 pm"></label>
+            </div>
+          </div>
+          <button class="text-button wide-field add-clinic-button" type="button" data-add-clinic>＋ Add another medical / chamber</button>
+        </div>
+        <p class="safety-note">Submitting saves a local demo profile only. BMDC details are not verified by this prototype; public listing requires an authorized verification service.</p>
+        <button class="text-button" type="button" data-boost-profile>Boost doctor profile · choose target location</button>
+        <div class="modal-actions"><button class="button button-secondary" type="button" data-close-dialog>Cancel</button><button class="button button-primary" type="submit">Submit for review</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="campaign-dialog" aria-labelledby="campaign-title">
+      <form class="modal-card compact-form" data-campaign-form data-location-form>
+        <div class="modal-header"><div><p class="eyebrow">LOCATION-TARGETED PROMOTION</p><h2 id="campaign-title">Create a campaign draft</h2><p>Choose the Bangladesh district or upazila/thana where this promotion should appear.</p></div><button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <div class="visit-fields">
+          <label>Promotion type<select name="type" required><option value="doctor-boost">Doctor profile boost</option><option value="medical-ad">Medical / hospital ad</option><option value="medicine-ad">Medicine / health product ad</option></select></label>
+          <label>Doctor, medical, or brand name<input name="campaignName" type="text" required placeholder="Name shown with the promotion"></label>
+          <div class="location-search-field wide-field">
+            <label for="campaign-location-query">Target location</label>
+            <div class="location-input-wrap"><span aria-hidden="true">⌖</span><input id="campaign-location-query" name="locationQuery" type="search" placeholder="Choose a district or area" autocomplete="off" data-location-query required><button type="button" class="location-clear" data-location-clear aria-label="Clear target location" hidden>×</button></div>
+            <input type="hidden" name="district" data-district><input type="hidden" name="area" data-area>
+            <div class="location-suggestions" data-location-suggestions role="listbox" hidden></div>
+            <small class="location-count" data-location-count></small>
+          </div>
+          <label class="wide-field">Promotion details<textarea name="details" rows="3" placeholder="Optional: describe the service or promotion"></textarea></label>
+        </div>
+        <p class="safety-note">This saves a local draft only. AdSense, campaign delivery, profile boosting, verification, and payments are not connected. Health and medicine ads require appropriate review before publication.</p>
+        <div class="modal-actions"><button class="button button-secondary" type="button" data-close-dialog>Cancel</button><button class="button button-primary" type="submit">Save campaign draft</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="clinic-profile-dialog" aria-labelledby="clinic-profile-title">
+      <form class="modal-card compact-form" data-clinic-profile-form>
+        <div class="modal-header"><div><p class="eyebrow">MEDICAL / HOSPITAL ONBOARDING</p><h2 id="clinic-profile-title">Register a medical</h2><p>Add the clinic location and the specialists who see patients here.</p></div><button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <div class="visit-fields">
+          <label class="wide-field">Medical / hospital name<input name="name" type="text" required placeholder="Facility name"></label>
+          <label>District<select name="district" required data-bd-district-select><option value="">Choose district</option></select></label>
+          <label>Area / upazila<input name="area" type="text" required placeholder="e.g. Dhanmondi"></label>
+          <label class="wide-field">Specialties available<input name="specialties" type="text" required placeholder="e.g. Cardiology, Pediatrics"></label>
+          <label class="wide-field">Doctor names and chamber schedules<textarea name="doctors" rows="3" required placeholder="Doctor name · specialty · days and hours"></textarea></label>
+          <label>Contact mobile<input name="mobile" type="tel" required placeholder="+880 1XXX-XXXXXX"></label>
+          <label>Email address<input name="email" type="email" required placeholder="clinic@example.com"></label>
+        </div>
+        <p class="safety-note">Demo only: facility registration is saved locally as pending review. Ads, payments, and Google AdSense are not connected.</p>
+        <div class="modal-actions"><button class="button button-secondary" type="button" data-close-dialog>Cancel</button><button class="button button-primary" type="submit">Submit for review</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal auth-modal" id="patient-profile-dialog" aria-labelledby="patient-profile-title">
+      <form class="modal-card compact-form" data-patient-profile-form>
+        <div class="modal-header"><div><p class="eyebrow">PATIENT PROFILES</p><h2 id="patient-profile-title">Your health profiles</h2><p>Profiles and histories stay separate on this device. Login and OTP require a connected service.</p></div><button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <div class="profile-switcher"><label>Profile on this device<select name="profileSelect" data-family-select></select></label><div class="profile-actions"><button class="text-button" type="button" data-activate-profile>Switch profile</button><button class="text-button" type="button" data-new-patient-profile>＋ Add profile</button></div></div>
+        <input name="profileId" type="hidden">
+        <div class="visit-fields">
+          <label>Full name<input name="name" type="text" required placeholder="Your name"></label>
+          <label>Mobile number<input name="mobile" type="tel" required placeholder="+880 1XXX-XXXXXX"></label>
+          <label class="wide-field">Email address<input name="email" type="email" required placeholder="you@example.com"></label>
+          <label>District<select name="district" data-bd-district-select><option value="">Choose district</option></select></label>
+          <label>Blood group<select name="bloodGroup"><option value="">Not added</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label class="wide-field">Allergies / important notes<input name="allergies" type="text" placeholder="Optional"></label>
+        </div>
+        <button class="text-button" type="button" data-send-otp>Verify email with OTP</button>
+        <div class="modal-actions"><button class="button button-secondary" type="button" data-close-dialog>Cancel</button><button class="button button-primary" type="submit">Save profile</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal image-modal" id="image-dialog" aria-label="Image preview">
+      <div class="image-preview"><button class="icon-button modal-close" type="button" data-close-dialog aria-label="Close">×</button><span aria-hidden="true">▧</span><p data-image-caption>Medical document preview</p></div>
+    </dialog>
+
+    <div class="toast" role="status" aria-live="polite" data-toast></div>
+  </body>
+</html>
